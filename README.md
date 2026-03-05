@@ -52,7 +52,7 @@ services:
     container_name: kiwix
     restart: unless-stopped
     ports:
-      - "8082:8080"
+      - "8080:8080"
     volumes:
       - /PATH:/data
     command:
@@ -63,7 +63,7 @@ services:
 
 | Setting | Description |
 |---|---|
-| `ports: "8082:8080"` | Exposes the server on host port `8082`. Change the left value to use a different port. |
+| `ports: "8080:8080"` | Exposes the server on host port `8080`. Change the left value to use a different port. |
 | `volumes: /PATH:/data` | Replace `/PATH` with the absolute path to your folder containing `.zim` files. |
 | `command: '*.zim'` | Serves all `.zim` files found in `/data`. |
 | `restart: unless-stopped` | Automatically restarts the container on reboot or crash. |
@@ -118,13 +118,13 @@ docker compose down
 Once running, open your browser and navigate to:
 
 ```
-http://localhost:8082
+http://localhost:8080
 ```
 
 From another device on your local network, replace `localhost` with the host machine's IP address:
 
 ```
-http://192.168.1.x:8082
+http://192.168.1.x:8080
 ```
 
 ---
@@ -148,7 +148,7 @@ docker compose up -d
 - Run `docker compose logs kiwix` to see what files were detected.
 
 **Port already in use**
-- Change the host port in `docker-compose.yml` (left side of `ports`), e.g. `"8083:8080"`.
+- Change the host port in `docker-compose.yml` (left side of `ports`), e.g. `"8080:8080"`.
 
 **Container exits immediately**
 - Ensure at least one `.zim` file is present — the server requires a file to serve on startup.
