@@ -1,0 +1,251 @@
+What's up, Ladybots and gentledroids. I am Dylan, the Technogiz guy, and today, I know
+it's been a while, we're downloading the internet. Okay. What the hell am I talking about? And
+I'm sorry that it's been so long. I've had a lot of stuff come up in life. It's been trouble.
+I'm trying guys, but I'm back now. So what am I talking about? So if we look over here
+at the screen, so this is the KiwiX library. You can reach this website by going to library.kiwix.org.
+What this website is, is an open source website that has the scrapings of various websites and
+services. So if we come in here, for example, one of the first ones we see is the PHP manual.
+We can click on this. It will open up a page. And as you can see, we have the PHP manual here
+in a copy that is not on the PHP manual website. We can go into the installing Unix systems.
+This is the PHP config. We can come out of here. We can go to the project Gutenberg library.
+They have it broken out into different categories. They also have the entire archive of the project
+Gutenberg library. So let's just go into the technology section here. And if you guys don't
+know what project Gutenberg is, project Gutenberg is a public license library of books that have
+no copyright or have ran out of copyright or they're in public domain. It's a free public open source
+service. And there's an entire dump of it. Click on this random book. We'll read it with HTML5. And just
+like that, we're now reading this book from the Gutenberg library. Now, this is all cool and all, but I said, we're going to download the internet.
+This is still using a website. Given all of the recent conflicts and the, shall we say, lack of trust in artificial intelligence that is rising and the global tensions where data centers and critical infrastructure seem to be military targets now because if the governments are going to use AI to kill people, well then the data centers are valid military targets to hit.
+So, but what happens if we lose too many data centers? What happens if we lose the DNS servers? On the level that most people consider the internet, there are hundreds of redundancies, thousands even. And, but as you go up the chain, those redundancies get less and less until you hit a certain group of servers called the root trust servers. What these servers do is they sit at the very top of DNS.
+DNS entry how to go. So without explaining DNS too much because this is a video about information,
+not DNS and networking. But essentially if you don't know, DNS is the name resolution service,
+domain name server, where when you type in facebook.com, facebook.com does not actually
+exist anywhere. That is a domain that points to an address. That address is an IPv4 or IPv6
+address, probably a high availability VIP. And then on Meta's level, they've got millions of servers and
+they probably rent AWS space and backups and all that. But on top of that is the DNS. So if the DNS
+server has a problem, nobody can go to facebook.com because even though all of the servers might be
+there, and even though your app might still work because a lot of the apps on your phone will use
+different DNS or direct calls to servers. But you know, if you're on your computer and you're trying
+to go to facebook.com and it doesn't work, that could very likely be a DNS issue. DNS is handled at
+different levels. And guys, I'm way oversimplifying this. I will eventually do a full scale DNS video.
+At some point, I want to do another high availability pie hole since that's gotten a lot better. So with DNS,
+there are different levels of DNS. There are the level where facebook.com is owned by this registrar,
+and it points to these domains. Then there is this registrar who is managing that they have a domain
+server that is authoritative for everything below them. And then all the way at the top, there are the
+root trust servers. Now, I say that these are the weakest link in the failure point. These are still highly
+redundant servers. Trust me, the powers in the world have made sure that these servers are highly
+redundant. Highly redundant does not mean impossible to take down. There are essentially seven keys that if
+seven different companies shut their servers down willingly or unwillingly, the entire internet basically
+grinds to a halt because name resolution wouldn't work. You might have some cached stuff that would work. If you can
+get IPs and whatnot, you can still kind of work around, but for about 98% of all internet traffic,
+if those seven companies shut their servers down, the internet is effectively gone for us,
+for the normal people. The military has backups and some of the companies have their own special
+backups, but for you and I, the common person who has to live in this world and society,
+the internet would be gone. That's up for debate whether that's a good thing or not.
+What is not up for debate is the internet is a veritable paragon of information. The internet
+contains all information that human society has ever been able to determine and figure out. We've
+digitized basically everything. What happens when I need information? We're here on the KiwiX library
+and you can see that all of these buttons have a download option and they range in size for anywhere
+from a couple of megs to gigs to a lot of gigs. So I'm just going to pick this PHP manual. It's 31
+megabytes here. We can click download. You get a couple of different options here. I'm just going
+to do a direct download, save that and it's downloaded. So, and you get this as a .zim file.
+Now there are programs you can use to open the .zim. What I'm about to show you guys is you're able to
+host your own KiwiX server. So they, because this is an open source project and their entire point of
+this project is to preserve as much information as possible. It's not only easy, but it's completely
+free. And once you have it set up, you're never going to want to go without it. So let me just get
+into this on this blank desktop. How are we going to do this? All you actually need to get this started
+is Docker. I run this in my Docker server that I host in my rack. But if you have Docker on your
+laptop, you can do it there too. And I'm going to show you guys how to do that on my laptop here.
+As you guys can see, I have Docker installed. I have containers. I have a container running on my
+local machine right now. So yeah, we're going to actually minimize this because I don't actually
+need to be in Docker. I just wanted to show you guys, I have it installed. If you're looking for
+a tutorial on how to install Docker, if you're on a desktop, it's very easy. Just download the Docker
+desktop software, install it, go through the setup for a server. That's there are how to guides.
+That's not what this video is for. I'm assuming you already have Docker or can reasonably teach
+yourself to get Docker. I'm going to actually open up a terminal window over here. I'm in my root
+directory. I'm going to make a, make a new directory called KiwiX. We're going to CD into that
+directory. We are going to make a Docker compose file. So we'll long with Docker, you will also
+need Docker compose. If you're on a server, that will be a separate install. Usually if you're
+installing Docker desktop, it will come with compose built in. I prefer nano. If you're a Vim person,
+you can do that. You can also just do this with like notepad. You do not have to do this in a terminal,
+but getting more comfortable in the terminal will help you in the future. So we're going to do nano,
+which is the text editor.
+And then we're gonna say docker-compose.yml.
+That's .yaml.
+So for any of my Docker guys, I'm sorry,
+I'm saying a lot of low level stuff here,
+but we gotta make the video for everybody.
+And this is a video designed to give information
+to everybody because that is a very good thing.
+Everybody should have information
+and information should be free.
+Okay, we're in here.
+This is a blank file and I already have some notes over here.
+So here I've just pasted this.
+I will leave this in the description.
+There will be a link down to a GitHub page
+that will go through the different steps of this video.
+But this is the exact Docker compose script
+that I run on my server.
+I do wanna go through this compose file
+just so you guys know what it's doing.
+So services, we're saying what services we have.
+We're listing out KeyWix,
+telling it where to pull that image from.
+And this image is their image.
+I will link to the KeyWix website as well.
+So you can follow their documentation.
+And then we're saying, you know,
+what's the name of the container?
+KeyWix.
+The restart policy is unless stopped,
+which means if the container stops for any reason,
+other than me saying stop running,
+it will restart itself automatically.
+Volumes is where the data will be stored.
+And then the command is what command is running.
+And you notice that this says star.zim.
+What that is going to do is tell the software to look for zim files.
+And the star is a wildcard modifier.
+What a wildcard modifier means in most applications like this is that the star is anything.
+So anything.zim should be included in the server.
+So that's what this script is doing.
+First of all, we're just going to change it a little bit here.
+So the only thing I'm actually going to change here is where this mount volumes was.
+I'm going to come over here.
+My finder open here.
+So I'm in the folder.
+We haven't put anything in the folder yet.
+This file doesn't exist yet because it hasn't been saved.
+It's just sitting in RAM, but we'll get back to that.
+Open this folder up and I'm actually just going to copy this path and paste it in here.
+So now instead of pointing at the volume mount, you know, resource drive of my server, where this came from,
+now it's going to be pointing at my user directory, my home directory,
+and then the key Wix folder that we just created.
+By default, this port will be 8080.
+I changed it on my server because in my production server, I have another port that is taken up by that.
+If you also are hosting something that is used on port 8080, like a game server or voice server, something like that, web server even.
+All you have to do in this Docker compose file is where this says 8080 colon 8080.
+You just change the first 8080 to whatever port you want.
+So the way Docker exposes ports on a network is the first port is the actual external facing port.
+And then the after the colon is the internal port to the container.
+I'm not going to go into more detail on that because that's getting into really high level Docker stuff.
+And this is not a high level Docker video.
+So I'm going to leave that at 8080. My volume is good. And I hit control X. It's going to ask if you want to save. I'm going to say yes.
+Back in the old day, you said type Docker dash compose. Nowadays, it's just going to be Docker space compose up. If you want to run this in the background, because if when I run this and I'm not going to do that, but when I run this, it's going to stay in my terminal window.
+And if I close my terminal window, the Docker container will also stop if you do the dash D command. So if I do Docker compose up dash D, what that will do is run it in the background. So I can close my terminal. I can do other things. And that container will still keep running until I go stop it.
+So I'm just going to do this like this. Docker compose up. Going to get some terminal stuff asking me to approve that. It's going to go to Docker. It's going to pull the container files. It's going to start setting it up. So you can see here I'm getting an error because there are no XIM files. If I, if I try to go to my local host 8080, you can see it's not working. Why is that? Well, that is because there is no XIM file in here. So if I take this PHP XIM and I just,
+put it into that key Wix folder, go back to this terminal here. I'm going to gracefully stop by hitting control C that kills whatever you're running in your terminal, unless it's running in the background. I'm going to run my Docker compose up again. Now you can see it's running. So, so if I bring my browser back up and I refresh this page, Oh, Hey, look, now we have a key Wix web interface, the same as we did when we went to there. So if I go back to the key Wix library, you can see it looks the same,
+except I only have the PHP manual. And as you can see, I'm running this on local host. Now, just to show you kind of how powerful this is, I'm going to switch over to my production server. Guys, at this point, that's it. You now have a local copy of whatever you can download. And the limit to how much you can store is your storage. And honestly, relative speaking, it is
+not that bad. These Zim files are designed to be compressed versions of websites. So if I come back over here, instead of going to the official key Wix library, I'm actually going to go to my production server, I'm going to do Docker prod 8082. So this is my internal DNS entry for my production Docker server. And as you can see here, I have it running on port 8082. And I have 26 books downloaded. So you
+you can see here, I've got PHP, I've got the code camp, I've got Wikipedia. Now, this one very interesting. This is the entirety of English Wikipedia. You can download all of Wikipedia. I only speak English. So I only took the time to do that. But if I click on this Wikipedia, right here, I get put into a homepage for Wikipedia. It's not pretty, but it works. And I can search
+You know, we can go through these different things here. What's something I want to search up. I'll search up Docker. So I'm just going to type in Docker. And I'm going to search. Now the search is going to be a little slow, guys. Remember, I'm running this, this is a archived version of Wikipedia that somebody else has taken. Actually, the Wikimedia Foundation, who which is the company that owns Wikipedia, among a couple other companies that you might not be familiar with, or you might be.
+They're a great foundation, by the way, Wikimedia. They very regularly every couple quarters or something will basically do an entire Zim dump of Wikipedia. That's actually where KeyWix got its start. KeyWix originally started as a Zim viewer for just Wikipedia. And then other people started taking the Zims. And by the way, there are ways you can take your own Zim snapshots of any website. I might cover that in another video. That's out of the scope of this one.
+But so I clicked on Docker here. So it's given me a couple different things. So I want Docker software. But if I click this, you can see this is the Wikipedia page for Docker. And I mean, we can go to Wikipedia proper. We can go Wikipedia. And we can go Docker software. And look at this, this is literally this is the Wikipedia page. So I have every single article that has
+has ever been published to Wikipedia ever,
+including the images, in English,
+up until January of this year.
+That's when my current archive is from.
+Now, some of you may be wondering, how big is that?
+Right, that sounds like a lot of stuff.
+I have all of Wikipedia in English,
+with images, downloaded as an archive.
+I'm going into my NAS here,
+because this project archive folder is the folder
+where all of my ZIMs live for production.
+If I sort these by size, which they already are,
+you can see that the largest one that I have
+is the Gutenberg project, which by the way,
+what that one is, this 253 gigabyte file here,
+is the entire Gutenberg library.
+So, if we were to go to the Project Gutenberg website, right,
+this is the official Project Gutenberg website
+that you can go to,
+every single book that is on this site,
+I have as a archived backup, and I can search them, I can read them.
+You know, if I back, oh, that's Wikipedia proper.
+So, you know, if I go home, I have the whole Wikipedia.
+I've got the Bitcoin Wiki.
+I've got the entire Arch Wiki.
+I've got Python documentation.
+I downloaded the Canadian financial Wiki.
+I'm not even Canadian.
+You know why?
+Because the entirety of that archive is four megabytes, honestly.
+I mean, that's a rounding error in storage, four megabytes.
+If I ever need to know any information about the Canadian financial system, for whatever reason,
+and I can't access that from the internet, I have a copy of it.
+If something ever happens, it would be nice to have the resources to teach people to rebuild.
+Medline. I mean, medical care is going to be very important and hard to have knowledge of when the internet goes down.
+I think of how many people rely on WebMD or even just, you know, the virtual meetings with their doctors.
+What happens when you can't even go see your doctor because the doctors are too expensive or what have you?
+I have the OpenStreetMap Wiki. So anything that has been put on the Wiki for OpenStreetMap, I have that.
+I have the entire iFixit tool or repair catalog. So, you know, if I come into this iFixit thing, I can go to iFixit's website, sure.
+But again, we're at war. There's a war going on. What if the website goes down? What if the internet goes down?
+And you need to fix something, right? Because just because the internet goes out doesn't mean we're not going to still be relying on our machines.
+People will still need to fix fridges. People will still need to fix stoves. People will still need to fix small, local electronics.
+Those of us that will be hosting network infrastructure for people and providing information and trying to help rebuild systems.
+We have to be able to fix our stuff. Well, right here, I have local copies of how to fix everything with pictures.
+I can dial in as if I were on the iFixit website and get full blown detailed as if it was their website.
+This is invaluable. I mean, if you're watching this video, you have an interest in data preservation or you're paranoid or both.
+But even just from a user standpoint, from a UNI data redundancy standpoint, having the ability to keep a catalog of any and all useful information that you might need on your own stuff that you own.
+Nobody else can tell me I can't do this. Right. And maybe one day the government might make this illegal. But if they do, I still have it and I will not be getting rid of it.
+It free information gives us the people the power, because when nobody can control the knowledge that you get, nobody can control you.
+So whether you are paranoid or you just are a nerd or you're thrilled about data integrity and preservation, which I mean, that's a good thing. We lose a lot of data for how advanced we have become as a society. We lose a lot of data as a people that we don't know. We just don't realize because there is so much.
+And everyone's done that where they look for a problem on a forum and it's some 10 year old forum that has the answer you need. And it's one comment. Those websites disappear all the time. And then that information is gone. And sure, we may not be able to archive the entire Internet, but.
+in a situation where the internet is down or has very limited access, having these resources at
+your disposal and at your community's disposal could literally be the difference between life,
+death, and prosperity. All of my archive is sitting at 398.13 gigs. If 400 gigs sounds like a lot for
+the amount of information that I have, I would like to raise this. This is a two terabyte Seagate USB 3
+hard drive. It's nothing special. I've had this for years. You can pick these up online, at Walmart,
+at any major retail store. Before the AI started driving all the prices up, you can get a two
+terabyte hard drive just like this that you can take anywhere for about 30 to 40 bucks. Now, is this
+going to be the fastest thing in the world? No. Is it going to be redundant? No, it's only one drive.
+You can't have redundancy with one drive. But two terabytes is enough to store my entire library with
+plenty of overhead. So this single drive sitting here on my desk, I have a Raspberry Pi 4. This is
+overkill for a Kiwix server. Literally, I could take this hard drive, slap this Pi on, put this on a solar
+node, and I now have a backup internet solution that can never be taken from me as long as this works.
+Obviously, I have this on my big server. It's redundant. My hard drives are backed up. But guys,
+the point is, it doesn't take much to get into this. And Kiwix sells hotspots, which is basically a
+Raspberry Pi with a massive SD card. And it runs the Kiwix server, and you connect to it over the internet.
+And it's just a little thing. And there's other companies I've seen that build their own and sell
+them. And they preload them with a bunch of information. As someone who runs a Jellyfin server,
+I have whole TV series that are more than this single folder. I have all of Dragon Ball Super
+on my Jellyfin server. So all of Dragon Ball Super, the entirety of that show, which I think is five
+seasons, and it's a cartoon. It's not even super high, you know, fidelity. But it's my Dragon Ball
+Super folder is bigger than my entire archive project. If it looks like I'm passionate about
+this, it's because I am. I have long since been a data preservationist. I understand that data is
+only preserved as long as it's held. And every day, data gets harder to get, more restrictions come out.
+If you're a non-U.S. viewer watching this, I'm sure you really know how easy it is for your government to
+just stop data. Even those of us here in the U.S. Remember 2019 when nobody could talk about a certain
+virus and the social medias were all very good at blocking everything about it or censoring people?
+Yeah, that step between tyranny and freedom is a single button click. And we don't own the servers that
+we use. So that is why I am so passionate about self-hosting and teaching people to be more computer
+literate. Because you don't need to be a genius to do this. You just need to be willing to learn and
+tinker a little bit. And then that little tiny bit of tinkering will drastically improve your life.
+Let's face it. In our modern world, an internet down scenario, that is a disaster. Finance markets stop,
+healthcare markets stop, transit stops, logistics breaks. Without the modern internet, our modern society
+breaks. So as many people as we can have keeping it alive, not to mention, again, if tyranny comes a-knockin',
+this information could not only be highly sought after, but highly needed. And it might be highly
+illegal to get at that point. So it might be a good idea to get it now while you still can. That was it.
+We have a KeyWix server. You can fill it up with whatever you want. I will, if this video gets enough
+support, I will do a video on how to take a KeyWix archive. That's something I've only begun to scratch the
+surface of. The other thing with this is, even if you don't want to run the server, there are Android
+and iOS, Mac and Windows apps for KeyWix. What they do is they're just Zim viewers. It won't run a server.
+Nobody else will be able to access it. But as long as you have the files, at least you will. So it just
+gives you so much potential for expanding your knowledge, keeping control of your knowledge,
+and also preserving important data to our human society. So I think this is a great project. I think
+the KeyWix team, Wikimedia, all those guys, the archive.org team, all of these major players that are
+dedicated to preserving as much data as possible should be celebrated. And they should be protected.
+And we should help them however we can, because information is the ultimate weapon. And it should
+be free. No one should have the power to control what anyone else knows. With that, I bid you guys
+to do. I hope you enjoyed the video. If you did, please leave a like. If you're new to the channel,
+please subscribe. I know it's been a while since I posted. I'm really sorry. Life has been kind of hammering at me from hell.
+Now, I'm working on it. I'm trying. I'm going to try not to have such big gaps in between videos. I'm sorry.
+I hope this video is a good introduction back to it, because this is the type of stuff that I am
+truly passionate about, is empowering individual people, teaching them digital literacy, and making
+sure that nobody should ever be able to tell you what it is, what the truth is. You yourself should
+always have the ability to research, find out, and discover that truth for yourself. Every single person,
+man, woman, child, every human being has the right to know and understand the truth. Knowledge should be
+free and protected. I'm Dylan, the Technogiz guy. I'll see you guys in the next one. Peace.
+Peace.
+Peace.

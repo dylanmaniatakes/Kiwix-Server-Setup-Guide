@@ -1,0 +1,1003 @@
+1
+00:00:00,560 --> 00:00:05,440
+What's up, Ladybots and gentledroids. I am Dylan, the Technogiz guy, and today, I know
+
+2
+00:00:05,440 --> 00:00:13,480
+it's been a while, we're downloading the internet. Okay. What the hell am I talking about? And
+
+3
+00:00:13,480 --> 00:00:17,480
+I'm sorry that it's been so long. I've had a lot of stuff come up in life. It's been trouble.
+
+4
+00:00:17,480 --> 00:00:23,000
+I'm trying guys, but I'm back now. So what am I talking about? So if we look over here
+
+5
+00:00:23,000 --> 00:00:29,980
+at the screen, so this is the KiwiX library. You can reach this website by going to library.kiwix.org.
+
+6
+00:00:29,980 --> 00:00:38,540
+What this website is, is an open source website that has the scrapings of various websites and
+
+7
+00:00:38,540 --> 00:00:43,440
+services. So if we come in here, for example, one of the first ones we see is the PHP manual.
+
+8
+00:00:43,440 --> 00:00:50,740
+We can click on this. It will open up a page. And as you can see, we have the PHP manual here
+
+9
+00:00:50,740 --> 00:00:59,040
+in a copy that is not on the PHP manual website. We can go into the installing Unix systems.
+
+10
+00:00:59,040 --> 00:01:05,560
+This is the PHP config. We can come out of here. We can go to the project Gutenberg library.
+
+11
+00:01:05,560 --> 00:01:10,860
+They have it broken out into different categories. They also have the entire archive of the project
+
+12
+00:01:10,860 --> 00:01:15,280
+Gutenberg library. So let's just go into the technology section here. And if you guys don't
+
+13
+00:01:15,280 --> 00:01:22,280
+know what project Gutenberg is, project Gutenberg is a public license library of books that have
+
+14
+00:01:22,280 --> 00:01:29,380
+no copyright or have ran out of copyright or they're in public domain. It's a free public open source
+
+15
+00:01:29,380 --> 00:01:36,280
+service. And there's an entire dump of it. Click on this random book. We'll read it with HTML5. And just
+
+16
+00:01:36,280 --> 00:01:45,220
+like that, we're now reading this book from the Gutenberg library. Now, this is all cool and all, but I said, we're going to download the internet.
+
+17
+00:01:45,220 --> 00:02:12,840
+This is still using a website. Given all of the recent conflicts and the, shall we say, lack of trust in artificial intelligence that is rising and the global tensions where data centers and critical infrastructure seem to be military targets now because if the governments are going to use AI to kill people, well then the data centers are valid military targets to hit.
+
+18
+00:02:13,680 --> 00:02:40,000
+So, but what happens if we lose too many data centers? What happens if we lose the DNS servers? On the level that most people consider the internet, there are hundreds of redundancies, thousands even. And, but as you go up the chain, those redundancies get less and less until you hit a certain group of servers called the root trust servers. What these servers do is they sit at the very top of DNS.
+
+19
+00:02:42,140 --> 00:02:48,460
+DNS entry how to go. So without explaining DNS too much because this is a video about information,
+
+20
+00:02:48,620 --> 00:02:56,100
+not DNS and networking. But essentially if you don't know, DNS is the name resolution service,
+
+21
+00:02:56,260 --> 00:03:03,580
+domain name server, where when you type in facebook.com, facebook.com does not actually
+
+22
+00:03:03,580 --> 00:03:11,280
+exist anywhere. That is a domain that points to an address. That address is an IPv4 or IPv6
+
+23
+00:03:11,280 --> 00:03:19,280
+address, probably a high availability VIP. And then on Meta's level, they've got millions of servers and
+
+24
+00:03:19,280 --> 00:03:27,160
+they probably rent AWS space and backups and all that. But on top of that is the DNS. So if the DNS
+
+25
+00:03:27,160 --> 00:03:33,660
+server has a problem, nobody can go to facebook.com because even though all of the servers might be
+
+26
+00:03:33,660 --> 00:03:39,120
+there, and even though your app might still work because a lot of the apps on your phone will use
+
+27
+00:03:39,120 --> 00:03:45,500
+different DNS or direct calls to servers. But you know, if you're on your computer and you're trying
+
+28
+00:03:45,500 --> 00:03:52,560
+to go to facebook.com and it doesn't work, that could very likely be a DNS issue. DNS is handled at
+
+29
+00:03:52,560 --> 00:03:57,960
+different levels. And guys, I'm way oversimplifying this. I will eventually do a full scale DNS video.
+
+30
+00:03:57,960 --> 00:04:04,420
+At some point, I want to do another high availability pie hole since that's gotten a lot better. So with DNS,
+
+31
+00:04:04,880 --> 00:04:12,880
+there are different levels of DNS. There are the level where facebook.com is owned by this registrar,
+
+32
+00:04:12,880 --> 00:04:21,360
+and it points to these domains. Then there is this registrar who is managing that they have a domain
+
+33
+00:04:21,360 --> 00:04:26,740
+server that is authoritative for everything below them. And then all the way at the top, there are the
+
+34
+00:04:26,740 --> 00:04:33,400
+root trust servers. Now, I say that these are the weakest link in the failure point. These are still highly
+
+35
+00:04:33,400 --> 00:04:38,940
+redundant servers. Trust me, the powers in the world have made sure that these servers are highly
+
+36
+00:04:38,940 --> 00:04:46,240
+redundant. Highly redundant does not mean impossible to take down. There are essentially seven keys that if
+
+37
+00:04:46,240 --> 00:04:52,880
+seven different companies shut their servers down willingly or unwillingly, the entire internet basically
+
+38
+00:04:52,880 --> 00:04:59,460
+grinds to a halt because name resolution wouldn't work. You might have some cached stuff that would work. If you can
+
+39
+00:04:59,460 --> 00:05:08,080
+get IPs and whatnot, you can still kind of work around, but for about 98% of all internet traffic,
+
+40
+00:05:08,220 --> 00:05:13,360
+if those seven companies shut their servers down, the internet is effectively gone for us,
+
+41
+00:05:13,600 --> 00:05:18,760
+for the normal people. The military has backups and some of the companies have their own special
+
+42
+00:05:18,760 --> 00:05:23,940
+backups, but for you and I, the common person who has to live in this world and society,
+
+43
+00:05:24,580 --> 00:05:27,860
+the internet would be gone. That's up for debate whether that's a good thing or not.
+
+44
+00:05:27,860 --> 00:05:33,380
+What is not up for debate is the internet is a veritable paragon of information. The internet
+
+45
+00:05:33,380 --> 00:05:40,960
+contains all information that human society has ever been able to determine and figure out. We've
+
+46
+00:05:40,960 --> 00:05:46,000
+digitized basically everything. What happens when I need information? We're here on the KiwiX library
+
+47
+00:05:46,000 --> 00:05:52,700
+and you can see that all of these buttons have a download option and they range in size for anywhere
+
+48
+00:05:52,700 --> 00:05:59,200
+from a couple of megs to gigs to a lot of gigs. So I'm just going to pick this PHP manual. It's 31
+
+49
+00:05:59,200 --> 00:06:03,520
+megabytes here. We can click download. You get a couple of different options here. I'm just going
+
+50
+00:06:03,520 --> 00:06:08,660
+to do a direct download, save that and it's downloaded. So, and you get this as a .zim file.
+
+51
+00:06:08,800 --> 00:06:14,660
+Now there are programs you can use to open the .zim. What I'm about to show you guys is you're able to
+
+52
+00:06:14,660 --> 00:06:22,840
+host your own KiwiX server. So they, because this is an open source project and their entire point of
+
+53
+00:06:22,840 --> 00:06:31,160
+this project is to preserve as much information as possible. It's not only easy, but it's completely
+
+54
+00:06:31,160 --> 00:06:38,060
+free. And once you have it set up, you're never going to want to go without it. So let me just get
+
+55
+00:06:38,060 --> 00:06:42,740
+into this on this blank desktop. How are we going to do this? All you actually need to get this started
+
+56
+00:06:42,740 --> 00:06:48,220
+is Docker. I run this in my Docker server that I host in my rack. But if you have Docker on your
+
+57
+00:06:48,220 --> 00:06:52,020
+laptop, you can do it there too. And I'm going to show you guys how to do that on my laptop here.
+
+58
+00:06:52,220 --> 00:06:58,300
+As you guys can see, I have Docker installed. I have containers. I have a container running on my
+
+59
+00:06:58,300 --> 00:07:04,140
+local machine right now. So yeah, we're going to actually minimize this because I don't actually
+
+60
+00:07:04,140 --> 00:07:07,920
+need to be in Docker. I just wanted to show you guys, I have it installed. If you're looking for
+
+61
+00:07:07,920 --> 00:07:13,240
+a tutorial on how to install Docker, if you're on a desktop, it's very easy. Just download the Docker
+
+62
+00:07:13,240 --> 00:07:19,800
+desktop software, install it, go through the setup for a server. That's there are how to guides.
+
+63
+00:07:20,120 --> 00:07:24,840
+That's not what this video is for. I'm assuming you already have Docker or can reasonably teach
+
+64
+00:07:24,840 --> 00:07:28,320
+yourself to get Docker. I'm going to actually open up a terminal window over here. I'm in my root
+
+65
+00:07:28,320 --> 00:07:32,860
+directory. I'm going to make a, make a new directory called KiwiX. We're going to CD into that
+
+66
+00:07:32,860 --> 00:07:38,280
+directory. We are going to make a Docker compose file. So we'll long with Docker, you will also
+
+67
+00:07:38,280 --> 00:07:42,700
+need Docker compose. If you're on a server, that will be a separate install. Usually if you're
+
+68
+00:07:42,700 --> 00:07:48,040
+installing Docker desktop, it will come with compose built in. I prefer nano. If you're a Vim person,
+
+69
+00:07:48,200 --> 00:07:53,040
+you can do that. You can also just do this with like notepad. You do not have to do this in a terminal,
+
+70
+00:07:53,040 --> 00:07:58,780
+but getting more comfortable in the terminal will help you in the future. So we're going to do nano,
+
+71
+00:07:58,960 --> 00:08:00,400
+which is the text editor.
+
+72
+00:08:00,400 --> 00:08:04,280
+And then we're gonna say docker-compose.yml.
+
+73
+00:08:05,160 --> 00:08:06,000
+That's .yaml.
+
+74
+00:08:06,000 --> 00:08:08,900
+So for any of my Docker guys, I'm sorry,
+
+75
+00:08:08,900 --> 00:08:11,560
+I'm saying a lot of low level stuff here,
+
+76
+00:08:11,560 --> 00:08:13,900
+but we gotta make the video for everybody.
+
+77
+00:08:13,900 --> 00:08:16,960
+And this is a video designed to give information
+
+78
+00:08:16,960 --> 00:08:19,620
+to everybody because that is a very good thing.
+
+79
+00:08:19,620 --> 00:08:21,200
+Everybody should have information
+
+80
+00:08:21,200 --> 00:08:23,480
+and information should be free.
+
+81
+00:08:23,480 --> 00:08:24,900
+Okay, we're in here.
+
+82
+00:08:24,900 --> 00:08:28,640
+This is a blank file and I already have some notes over here.
+
+83
+00:08:28,640 --> 00:08:33,340
+So here I've just pasted this.
+
+84
+00:08:33,340 --> 00:08:35,400
+I will leave this in the description.
+
+85
+00:08:35,400 --> 00:08:37,280
+There will be a link down to a GitHub page
+
+86
+00:08:37,280 --> 00:08:40,320
+that will go through the different steps of this video.
+
+87
+00:08:40,320 --> 00:08:43,060
+But this is the exact Docker compose script
+
+88
+00:08:43,060 --> 00:08:44,080
+that I run on my server.
+
+89
+00:08:44,080 --> 00:08:45,920
+I do wanna go through this compose file
+
+90
+00:08:45,920 --> 00:08:47,660
+just so you guys know what it's doing.
+
+91
+00:08:47,660 --> 00:08:50,520
+So services, we're saying what services we have.
+
+92
+00:08:50,520 --> 00:08:52,320
+We're listing out KeyWix,
+
+93
+00:08:52,320 --> 00:08:54,200
+telling it where to pull that image from.
+
+94
+00:08:54,200 --> 00:08:55,860
+And this image is their image.
+
+95
+00:08:55,860 --> 00:08:57,960
+I will link to the KeyWix website as well.
+
+96
+00:08:57,960 --> 00:08:59,720
+So you can follow their documentation.
+
+97
+00:08:59,720 --> 00:09:00,460
+And then we're saying, you know,
+
+98
+00:09:00,460 --> 00:09:01,800
+what's the name of the container?
+
+99
+00:09:01,800 --> 00:09:02,660
+KeyWix.
+
+100
+00:09:02,660 --> 00:09:04,800
+The restart policy is unless stopped,
+
+101
+00:09:04,800 --> 00:09:07,460
+which means if the container stops for any reason,
+
+102
+00:09:07,460 --> 00:09:09,920
+other than me saying stop running,
+
+103
+00:09:09,920 --> 00:09:11,640
+it will restart itself automatically.
+
+104
+00:09:11,640 --> 00:09:13,820
+Volumes is where the data will be stored.
+
+105
+00:09:13,820 --> 00:09:16,420
+And then the command is what command is running.
+
+106
+00:09:16,420 --> 00:09:19,920
+And you notice that this says star.zim.
+
+107
+00:09:19,920 --> 00:09:24,920
+What that is going to do is tell the software to look for zim files.
+
+108
+00:09:24,920 --> 00:09:27,620
+And the star is a wildcard modifier.
+
+109
+00:09:27,620 --> 00:09:33,760
+What a wildcard modifier means in most applications like this is that the star is anything.
+
+110
+00:09:33,760 --> 00:09:38,880
+So anything.zim should be included in the server.
+
+111
+00:09:38,880 --> 00:09:41,220
+So that's what this script is doing.
+
+112
+00:09:41,220 --> 00:09:44,420
+First of all, we're just going to change it a little bit here.
+
+113
+00:09:46,380 --> 00:09:54,000
+So the only thing I'm actually going to change here is where this mount volumes was.
+
+114
+00:09:54,000 --> 00:09:57,000
+I'm going to come over here.
+
+115
+00:09:57,000 --> 00:09:59,460
+My finder open here.
+
+116
+00:09:59,460 --> 00:10:00,340
+So I'm in the folder.
+
+117
+00:10:00,340 --> 00:10:02,340
+We haven't put anything in the folder yet.
+
+118
+00:10:02,340 --> 00:10:05,460
+This file doesn't exist yet because it hasn't been saved.
+
+119
+00:10:05,460 --> 00:10:07,240
+It's just sitting in RAM, but we'll get back to that.
+
+120
+00:10:07,240 --> 00:10:13,000
+Open this folder up and I'm actually just going to copy this path and paste it in here.
+
+121
+00:10:13,000 --> 00:10:20,000
+So now instead of pointing at the volume mount, you know, resource drive of my server, where this came from,
+
+122
+00:10:20,000 --> 00:10:23,600
+now it's going to be pointing at my user directory, my home directory,
+
+123
+00:10:23,600 --> 00:10:26,140
+and then the key Wix folder that we just created.
+
+124
+00:10:26,140 --> 00:10:29,100
+By default, this port will be 8080.
+
+125
+00:10:29,100 --> 00:10:36,100
+I changed it on my server because in my production server, I have another port that is taken up by that.
+
+126
+00:10:36,100 --> 00:10:44,600
+If you also are hosting something that is used on port 8080, like a game server or voice server, something like that, web server even.
+
+127
+00:10:44,600 --> 00:10:50,300
+All you have to do in this Docker compose file is where this says 8080 colon 8080.
+
+128
+00:10:50,300 --> 00:10:54,340
+You just change the first 8080 to whatever port you want.
+
+129
+00:10:54,340 --> 00:11:01,340
+So the way Docker exposes ports on a network is the first port is the actual external facing port.
+
+130
+00:11:01,340 --> 00:11:05,840
+And then the after the colon is the internal port to the container.
+
+131
+00:11:05,840 --> 00:11:10,880
+I'm not going to go into more detail on that because that's getting into really high level Docker stuff.
+
+132
+00:11:10,880 --> 00:11:13,420
+And this is not a high level Docker video.
+
+133
+00:11:13,420 --> 00:11:23,420
+So I'm going to leave that at 8080. My volume is good. And I hit control X. It's going to ask if you want to save. I'm going to say yes.
+
+134
+00:11:23,420 --> 00:11:39,460
+Back in the old day, you said type Docker dash compose. Nowadays, it's just going to be Docker space compose up. If you want to run this in the background, because if when I run this and I'm not going to do that, but when I run this, it's going to stay in my terminal window.
+
+135
+00:11:39,460 --> 00:11:57,500
+And if I close my terminal window, the Docker container will also stop if you do the dash D command. So if I do Docker compose up dash D, what that will do is run it in the background. So I can close my terminal. I can do other things. And that container will still keep running until I go stop it.
+
+136
+00:11:57,500 --> 00:12:27,480
+So I'm just going to do this like this. Docker compose up. Going to get some terminal stuff asking me to approve that. It's going to go to Docker. It's going to pull the container files. It's going to start setting it up. So you can see here I'm getting an error because there are no XIM files. If I, if I try to go to my local host 8080, you can see it's not working. Why is that? Well, that is because there is no XIM file in here. So if I take this PHP XIM and I just,
+
+137
+00:12:27,480 --> 00:12:57,300
+put it into that key Wix folder, go back to this terminal here. I'm going to gracefully stop by hitting control C that kills whatever you're running in your terminal, unless it's running in the background. I'm going to run my Docker compose up again. Now you can see it's running. So, so if I bring my browser back up and I refresh this page, Oh, Hey, look, now we have a key Wix web interface, the same as we did when we went to there. So if I go back to the key Wix library, you can see it looks the same,
+
+138
+00:12:57,300 --> 00:13:27,120
+except I only have the PHP manual. And as you can see, I'm running this on local host. Now, just to show you kind of how powerful this is, I'm going to switch over to my production server. Guys, at this point, that's it. You now have a local copy of whatever you can download. And the limit to how much you can store is your storage. And honestly, relative speaking, it is
+
+139
+00:13:27,120 --> 00:13:56,940
+not that bad. These Zim files are designed to be compressed versions of websites. So if I come back over here, instead of going to the official key Wix library, I'm actually going to go to my production server, I'm going to do Docker prod 8082. So this is my internal DNS entry for my production Docker server. And as you can see here, I have it running on port 8082. And I have 26 books downloaded. So you
+
+140
+00:13:56,940 --> 00:14:26,760
+you can see here, I've got PHP, I've got the code camp, I've got Wikipedia. Now, this one very interesting. This is the entirety of English Wikipedia. You can download all of Wikipedia. I only speak English. So I only took the time to do that. But if I click on this Wikipedia, right here, I get put into a homepage for Wikipedia. It's not pretty, but it works. And I can search
+
+141
+00:14:26,760 --> 00:14:56,580
+You know, we can go through these different things here. What's something I want to search up. I'll search up Docker. So I'm just going to type in Docker. And I'm going to search. Now the search is going to be a little slow, guys. Remember, I'm running this, this is a archived version of Wikipedia that somebody else has taken. Actually, the Wikimedia Foundation, who which is the company that owns Wikipedia, among a couple other companies that you might not be familiar with, or you might be.
+
+142
+00:14:56,580 --> 00:15:26,180
+They're a great foundation, by the way, Wikimedia. They very regularly every couple quarters or something will basically do an entire Zim dump of Wikipedia. That's actually where KeyWix got its start. KeyWix originally started as a Zim viewer for just Wikipedia. And then other people started taking the Zims. And by the way, there are ways you can take your own Zim snapshots of any website. I might cover that in another video. That's out of the scope of this one.
+
+143
+00:15:26,400 --> 00:15:56,220
+But so I clicked on Docker here. So it's given me a couple different things. So I want Docker software. But if I click this, you can see this is the Wikipedia page for Docker. And I mean, we can go to Wikipedia proper. We can go Wikipedia. And we can go Docker software. And look at this, this is literally this is the Wikipedia page. So I have every single article that has
+
+144
+00:15:56,220 --> 00:15:58,720
+has ever been published to Wikipedia ever,
+
+145
+00:15:58,720 --> 00:16:01,220
+including the images, in English,
+
+146
+00:16:02,440 --> 00:16:04,140
+up until January of this year.
+
+147
+00:16:04,140 --> 00:16:06,400
+That's when my current archive is from.
+
+148
+00:16:06,400 --> 00:16:09,960
+Now, some of you may be wondering, how big is that?
+
+149
+00:16:09,960 --> 00:16:11,600
+Right, that sounds like a lot of stuff.
+
+150
+00:16:11,600 --> 00:16:15,380
+I have all of Wikipedia in English,
+
+151
+00:16:15,380 --> 00:16:18,100
+with images, downloaded as an archive.
+
+152
+00:16:18,100 --> 00:16:20,160
+I'm going into my NAS here,
+
+153
+00:16:20,160 --> 00:16:24,320
+because this project archive folder is the folder
+
+154
+00:16:24,320 --> 00:16:27,280
+where all of my ZIMs live for production.
+
+155
+00:16:27,280 --> 00:16:30,340
+If I sort these by size, which they already are,
+
+156
+00:16:30,340 --> 00:16:33,040
+you can see that the largest one that I have
+
+157
+00:16:33,040 --> 00:16:36,100
+is the Gutenberg project, which by the way,
+
+158
+00:16:36,100 --> 00:16:40,980
+what that one is, this 253 gigabyte file here,
+
+159
+00:16:40,980 --> 00:16:45,100
+is the entire Gutenberg library.
+
+160
+00:16:45,100 --> 00:16:49,200
+So, if we were to go to the Project Gutenberg website, right,
+
+161
+00:16:49,200 --> 00:16:51,580
+this is the official Project Gutenberg website
+
+162
+00:16:51,580 --> 00:16:52,580
+that you can go to,
+
+163
+00:16:53,680 --> 00:16:57,400
+every single book that is on this site,
+
+164
+00:16:57,400 --> 00:17:02,780
+I have as a archived backup, and I can search them, I can read them.
+
+165
+00:17:02,780 --> 00:17:07,400
+You know, if I back, oh, that's Wikipedia proper.
+
+166
+00:17:07,400 --> 00:17:10,360
+So, you know, if I go home, I have the whole Wikipedia.
+
+167
+00:17:10,360 --> 00:17:11,700
+I've got the Bitcoin Wiki.
+
+168
+00:17:11,700 --> 00:17:13,700
+I've got the entire Arch Wiki.
+
+169
+00:17:13,700 --> 00:17:15,700
+I've got Python documentation.
+
+170
+00:17:15,700 --> 00:17:18,060
+I downloaded the Canadian financial Wiki.
+
+171
+00:17:18,060 --> 00:17:19,780
+I'm not even Canadian.
+
+172
+00:17:19,780 --> 00:17:20,780
+You know why?
+
+173
+00:17:20,780 --> 00:17:25,780
+Because the entirety of that archive is four megabytes, honestly.
+
+174
+00:17:25,780 --> 00:17:29,160
+I mean, that's a rounding error in storage, four megabytes.
+
+175
+00:17:29,160 --> 00:17:35,780
+If I ever need to know any information about the Canadian financial system, for whatever reason,
+
+176
+00:17:35,780 --> 00:17:39,500
+and I can't access that from the internet, I have a copy of it.
+
+177
+00:17:39,500 --> 00:17:44,880
+If something ever happens, it would be nice to have the resources to teach people to rebuild.
+
+178
+00:17:44,880 --> 00:17:52,600
+Medline. I mean, medical care is going to be very important and hard to have knowledge of when the internet goes down.
+
+179
+00:17:52,600 --> 00:17:59,320
+I think of how many people rely on WebMD or even just, you know, the virtual meetings with their doctors.
+
+180
+00:17:59,320 --> 00:18:05,700
+What happens when you can't even go see your doctor because the doctors are too expensive or what have you?
+
+181
+00:18:05,700 --> 00:18:12,320
+I have the OpenStreetMap Wiki. So anything that has been put on the Wiki for OpenStreetMap, I have that.
+
+182
+00:18:12,320 --> 00:18:21,320
+I have the entire iFixit tool or repair catalog. So, you know, if I come into this iFixit thing, I can go to iFixit's website, sure.
+
+183
+00:18:21,320 --> 00:18:30,200
+But again, we're at war. There's a war going on. What if the website goes down? What if the internet goes down?
+
+184
+00:18:30,200 --> 00:18:37,000
+And you need to fix something, right? Because just because the internet goes out doesn't mean we're not going to still be relying on our machines.
+
+185
+00:18:37,000 --> 00:18:44,000
+People will still need to fix fridges. People will still need to fix stoves. People will still need to fix small, local electronics.
+
+186
+00:18:44,000 --> 00:18:50,040
+Those of us that will be hosting network infrastructure for people and providing information and trying to help rebuild systems.
+
+187
+00:18:50,040 --> 00:18:58,920
+We have to be able to fix our stuff. Well, right here, I have local copies of how to fix everything with pictures.
+
+188
+00:18:58,920 --> 00:19:07,800
+I can dial in as if I were on the iFixit website and get full blown detailed as if it was their website.
+
+189
+00:19:07,800 --> 00:19:17,800
+This is invaluable. I mean, if you're watching this video, you have an interest in data preservation or you're paranoid or both.
+
+190
+00:19:17,800 --> 00:19:36,680
+But even just from a user standpoint, from a UNI data redundancy standpoint, having the ability to keep a catalog of any and all useful information that you might need on your own stuff that you own.
+
+191
+00:19:36,680 --> 00:19:45,560
+Nobody else can tell me I can't do this. Right. And maybe one day the government might make this illegal. But if they do, I still have it and I will not be getting rid of it.
+
+192
+00:19:45,560 --> 00:19:55,560
+It free information gives us the people the power, because when nobody can control the knowledge that you get, nobody can control you.
+
+193
+00:19:55,560 --> 00:20:16,440
+So whether you are paranoid or you just are a nerd or you're thrilled about data integrity and preservation, which I mean, that's a good thing. We lose a lot of data for how advanced we have become as a society. We lose a lot of data as a people that we don't know. We just don't realize because there is so much.
+
+194
+00:20:16,440 --> 00:20:35,320
+And everyone's done that where they look for a problem on a forum and it's some 10 year old forum that has the answer you need. And it's one comment. Those websites disappear all the time. And then that information is gone. And sure, we may not be able to archive the entire Internet, but.
+
+195
+00:20:35,320 --> 00:20:43,640
+in a situation where the internet is down or has very limited access, having these resources at
+
+196
+00:20:43,640 --> 00:20:49,020
+your disposal and at your community's disposal could literally be the difference between life,
+
+197
+00:20:49,260 --> 00:20:59,820
+death, and prosperity. All of my archive is sitting at 398.13 gigs. If 400 gigs sounds like a lot for
+
+198
+00:20:59,820 --> 00:21:09,060
+the amount of information that I have, I would like to raise this. This is a two terabyte Seagate USB 3
+
+199
+00:21:09,060 --> 00:21:16,500
+hard drive. It's nothing special. I've had this for years. You can pick these up online, at Walmart,
+
+200
+00:21:16,860 --> 00:21:23,520
+at any major retail store. Before the AI started driving all the prices up, you can get a two
+
+201
+00:21:23,520 --> 00:21:32,300
+terabyte hard drive just like this that you can take anywhere for about 30 to 40 bucks. Now, is this
+
+202
+00:21:32,300 --> 00:21:37,520
+going to be the fastest thing in the world? No. Is it going to be redundant? No, it's only one drive.
+
+203
+00:21:37,580 --> 00:21:45,300
+You can't have redundancy with one drive. But two terabytes is enough to store my entire library with
+
+204
+00:21:45,300 --> 00:21:52,880
+plenty of overhead. So this single drive sitting here on my desk, I have a Raspberry Pi 4. This is
+
+205
+00:21:52,880 --> 00:22:01,140
+overkill for a Kiwix server. Literally, I could take this hard drive, slap this Pi on, put this on a solar
+
+206
+00:22:01,140 --> 00:22:07,520
+node, and I now have a backup internet solution that can never be taken from me as long as this works.
+
+207
+00:22:08,280 --> 00:22:13,420
+Obviously, I have this on my big server. It's redundant. My hard drives are backed up. But guys,
+
+208
+00:22:13,840 --> 00:22:20,800
+the point is, it doesn't take much to get into this. And Kiwix sells hotspots, which is basically a
+
+209
+00:22:20,800 --> 00:22:28,020
+Raspberry Pi with a massive SD card. And it runs the Kiwix server, and you connect to it over the internet.
+
+210
+00:22:28,480 --> 00:22:32,220
+And it's just a little thing. And there's other companies I've seen that build their own and sell
+
+211
+00:22:32,220 --> 00:22:36,820
+them. And they preload them with a bunch of information. As someone who runs a Jellyfin server,
+
+212
+00:22:37,660 --> 00:22:46,080
+I have whole TV series that are more than this single folder. I have all of Dragon Ball Super
+
+213
+00:22:46,080 --> 00:22:52,680
+on my Jellyfin server. So all of Dragon Ball Super, the entirety of that show, which I think is five
+
+214
+00:22:52,680 --> 00:23:00,400
+seasons, and it's a cartoon. It's not even super high, you know, fidelity. But it's my Dragon Ball
+
+215
+00:23:00,400 --> 00:23:07,260
+Super folder is bigger than my entire archive project. If it looks like I'm passionate about
+
+216
+00:23:07,260 --> 00:23:14,360
+this, it's because I am. I have long since been a data preservationist. I understand that data is
+
+217
+00:23:14,360 --> 00:23:22,040
+only preserved as long as it's held. And every day, data gets harder to get, more restrictions come out.
+
+218
+00:23:22,640 --> 00:23:29,200
+If you're a non-U.S. viewer watching this, I'm sure you really know how easy it is for your government to
+
+219
+00:23:29,200 --> 00:23:36,640
+just stop data. Even those of us here in the U.S. Remember 2019 when nobody could talk about a certain
+
+220
+00:23:36,640 --> 00:23:43,180
+virus and the social medias were all very good at blocking everything about it or censoring people?
+
+221
+00:23:44,240 --> 00:23:52,420
+Yeah, that step between tyranny and freedom is a single button click. And we don't own the servers that
+
+222
+00:23:52,420 --> 00:23:59,800
+we use. So that is why I am so passionate about self-hosting and teaching people to be more computer
+
+223
+00:23:59,800 --> 00:24:06,000
+literate. Because you don't need to be a genius to do this. You just need to be willing to learn and
+
+224
+00:24:06,000 --> 00:24:12,400
+tinker a little bit. And then that little tiny bit of tinkering will drastically improve your life.
+
+225
+00:24:12,520 --> 00:24:22,480
+Let's face it. In our modern world, an internet down scenario, that is a disaster. Finance markets stop,
+
+226
+00:24:22,480 --> 00:24:30,980
+healthcare markets stop, transit stops, logistics breaks. Without the modern internet, our modern society
+
+227
+00:24:30,980 --> 00:24:40,100
+breaks. So as many people as we can have keeping it alive, not to mention, again, if tyranny comes a-knockin',
+
+228
+00:24:40,100 --> 00:24:48,180
+this information could not only be highly sought after, but highly needed. And it might be highly
+
+229
+00:24:48,180 --> 00:24:55,140
+illegal to get at that point. So it might be a good idea to get it now while you still can. That was it.
+
+230
+00:24:55,700 --> 00:25:04,120
+We have a KeyWix server. You can fill it up with whatever you want. I will, if this video gets enough
+
+231
+00:25:04,120 --> 00:25:09,820
+support, I will do a video on how to take a KeyWix archive. That's something I've only begun to scratch the
+
+232
+00:25:09,820 --> 00:25:15,840
+surface of. The other thing with this is, even if you don't want to run the server, there are Android
+
+233
+00:25:15,840 --> 00:25:22,920
+and iOS, Mac and Windows apps for KeyWix. What they do is they're just Zim viewers. It won't run a server.
+
+234
+00:25:23,420 --> 00:25:29,620
+Nobody else will be able to access it. But as long as you have the files, at least you will. So it just
+
+235
+00:25:29,620 --> 00:25:36,880
+gives you so much potential for expanding your knowledge, keeping control of your knowledge,
+
+236
+00:25:37,540 --> 00:25:45,560
+and also preserving important data to our human society. So I think this is a great project. I think
+
+237
+00:25:45,560 --> 00:25:52,860
+the KeyWix team, Wikimedia, all those guys, the archive.org team, all of these major players that are
+
+238
+00:25:52,860 --> 00:25:59,420
+dedicated to preserving as much data as possible should be celebrated. And they should be protected.
+
+239
+00:25:59,560 --> 00:26:07,580
+And we should help them however we can, because information is the ultimate weapon. And it should
+
+240
+00:26:07,580 --> 00:26:17,760
+be free. No one should have the power to control what anyone else knows. With that, I bid you guys
+
+241
+00:26:17,760 --> 00:26:22,080
+to do. I hope you enjoyed the video. If you did, please leave a like. If you're new to the channel,
+
+242
+00:26:22,080 --> 00:26:29,280
+please subscribe. I know it's been a while since I posted. I'm really sorry. Life has been kind of hammering at me from hell.
+
+243
+00:26:29,280 --> 00:26:35,200
+Now, I'm working on it. I'm trying. I'm going to try not to have such big gaps in between videos. I'm sorry.
+
+244
+00:26:35,420 --> 00:26:41,060
+I hope this video is a good introduction back to it, because this is the type of stuff that I am
+
+245
+00:26:41,060 --> 00:26:47,180
+truly passionate about, is empowering individual people, teaching them digital literacy, and making
+
+246
+00:26:47,180 --> 00:26:53,140
+sure that nobody should ever be able to tell you what it is, what the truth is. You yourself should
+
+247
+00:26:53,140 --> 00:27:01,480
+always have the ability to research, find out, and discover that truth for yourself. Every single person,
+
+248
+00:27:01,480 --> 00:27:11,620
+man, woman, child, every human being has the right to know and understand the truth. Knowledge should be
+
+249
+00:27:11,620 --> 00:27:16,000
+free and protected. I'm Dylan, the Technogiz guy. I'll see you guys in the next one. Peace.
+
+250
+00:27:16,000 --> 00:27:16,040
+Peace.
+
+251
+00:27:16,040 --> 00:27:46,040
+Peace.
