@@ -1,6 +1,6 @@
 # Kiwix Server — Docker Compose Setup
 
-> *This README is a companion to the YouTube video walkthrough — follow along or use this as a standalone reference.*
+> *This README is a companion to the [YouTube video walkthrough](https://youtu.be/83YTDt4JdoM) — follow along or use this as a standalone reference.*
 
 ---
 
